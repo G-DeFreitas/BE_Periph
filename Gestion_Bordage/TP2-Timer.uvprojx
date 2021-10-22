@@ -339,7 +339,7 @@
               <MiscControls></MiscControls>
               <Define></Define>
               <Undefine></Undefine>
-              <IncludePath>..\Drivers;.\Include</IncludePath>
+              <IncludePath>..\Drivers;.\Include;..\Services</IncludePath>
             </VariousControls>
           </Cads>
           <Aads>

@@ -3,11 +3,11 @@
 #include "Driver_GPIO.h"
 #include "MyADC.h"
 
-//static MyTimer_Struct_TypeDef MonTimer;
+static MyTimer_Struct_TypeDef MonTimer;
 
 static MyGPIO_Struct_TypeDef LED_Externe;	
 
-//static MyGPIO_Struct_TypeDef Timer_Output;
+static MyGPIO_Struct_TypeDef Timer_Output;
 
 
 void IT_function (void){
@@ -45,23 +45,23 @@ int main(){
 //  MyTimer_Base_Start(TIM1);
 //	MyTimer_ActiveIT (TIM1, 4, IT_function);
 
-//		MonTimer.Timer = TIM1;
-//		MonTimer.ARR = 720-1; //72MEG / (ARR+1*PSC+1)
-//		MonTimer.PSC = 1-1;
+		MonTimer.Timer = TIM3;
+		MonTimer.ARR = 720-1; //72MEG / (ARR+1*PSC+1)
+		MonTimer.PSC = 1-1;
 //	
-//		Timer_Output.GPIO = GPIOA;
-//		Timer_Output.GPIO_Conf =AltOut_Ppull;	
-//		Timer_Output.GPIO_Pin = 3 + 7;
-//		TIM1->BDTR |= TIM_BDTR_MOE;
-//		MyGPIO_Init (&Timer_Output);
+		Timer_Output.GPIO = GPIOA;
+		Timer_Output.GPIO_Conf =AltOut_Ppull;	
+		Timer_Output.GPIO_Pin = 1 + 7;
+		TIM1->BDTR |= TIM_BDTR_MOE;
+		MyGPIO_Init (&Timer_Output);
 
-//		MyTimer_Base_Init (&MonTimer);
-//		MyTimer_PWM(MonTimer.Timer , 3);
-//		Set_DutyCycle(MonTimer.Timer, 3, 2000);
-//		MyTimer_Base_Start(MonTimer.Timer);
+		MyTimer_Base_Init (&MonTimer);
+		MyTimer_PWM(MonTimer.Timer , 1);
+		Set_DutyCycle(MonTimer.Timer, 1, 2000);
+		MyTimer_Base_Start(MonTimer.Timer);
 
-			Init_ADC_Single_Conv(ADC1,1);
-			ADC_Start(ADC1,4);
+//			Init_ADC_Single_Conv(ADC1,1);
+//			ADC_Start(ADC1,4);
 	while(1);
 }
 

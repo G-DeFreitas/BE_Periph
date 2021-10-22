@@ -162,7 +162,7 @@ Timer->CCER |= TIM_CCER_CC1E << 4 * (Channel-1); // CCxE mis à 1, x au Channel c
 //	MyGPIO_Init (&Timer_Output);
 }
 
-void Set_DutyCycle(TIM_TypeDef * Timer, char Channel, int Duty_Cycle){ //duty cycle ab,cd% -> abcd
+void MyTimer_Set_DutyCycle(TIM_TypeDef * Timer, char Channel, int Duty_Cycle){ //duty cycle ab,cd% -> abcd
 	int CCRx = ((Timer->ARR +1) * Duty_Cycle)/10000;
 	switch (Channel){
 		case 1:
@@ -178,4 +178,8 @@ void Set_DutyCycle(TIM_TypeDef * Timer, char Channel, int Duty_Cycle){ //duty cy
 		Timer->CCR4 =CCRx;
 		break;
 	}
+}
+
+int MyTimer_Read_CNT(TIM_TypeDef * Timer){
+	return Timer->CNT;
 }

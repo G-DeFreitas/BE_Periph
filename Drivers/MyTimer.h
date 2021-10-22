@@ -67,4 +67,11 @@ int MyTimer_Poll(TIM_TypeDef * Timer) ;
 * @param . . . .
 * @Note duty cycle ab,cd% -> abcd
 */
-void Set_DutyCycle(TIM_TypeDef * Timer, char Channel, int Duty_Cycle); //duty cycle ab,cd% -> abcd
+void MyTimer_Set_DutyCycle(TIM_TypeDef * Timer, char Channel, int Duty_Cycle); //duty cycle ab,cd% -> abcd
+
+/* *
+* @brief Renvoie la valeur de compteur d'un timer
+* @param . . . .
+* @Note 
+*/
+int MyTimer_Read_CNT(TIM_TypeDef * Timer);
