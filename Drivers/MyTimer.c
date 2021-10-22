@@ -29,6 +29,28 @@ void MyTimer_Base_Init ( MyTimer_Struct_TypeDef * Timer ){
 			TIM4->PSC = Timer->PSC;
 	}
 }
+
+void MyTimer_Incremental_Coder_Mode ( TIM_TypeDef * Timer ){
+	Timer->CCMR1 |= TIM_CCMR1_CC1S_0;
+	Timer->CCMR1 &= ~TIM_CCMR1_CC1S_1;
+	Timer->CCMR1 |= TIM_CCMR1_CC2S_0;
+	Timer->CCMR1 &= ~TIM_CCMR1_CC2S_1;
+	Timer->CCER &= ~TIM_CCER_CC2P;
+	Timer->CCER &= ~TIM_CCER_CC2NP;
+	Timer->CCMR1 &= ~(TIM_CCMR1_IC2F_0 |TIM_CCMR1_IC2F_1 | TIM_CCMR1_IC2F_2 | TIM_CCMR1_IC2F_3 );
+	Timer->CCER &= ~TIM_CCER_CC1P;
+	Timer->CCER &= ~TIM_CCER_CC1NP;
+	Timer->CCMR1 &= ~(TIM_CCMR1_IC1F_0 |TIM_CCMR1_IC1F_1 | TIM_CCMR1_IC1F_2 | TIM_CCMR1_IC1F_3 );
+	Timer->SMCR &= ~TIM_SMCR_SMS_2;
+	Timer->SMCR |= (TIM_SMCR_SMS_0 |TIM_SMCR_SMS_1);
+	Timer->CR1 |= TIM_CR1_CEN;
+}
+
+int MyTimer_Poll(TIM_TypeDef * Timer){
+	return Timer->CNT;
+}
+
+
 void MyTimer_ActiveIT (TIM_TypeDef * Timer, char Prio, void(*IT_function) (void)){
 
 	
@@ -138,4 +160,22 @@ Timer->CCER |= TIM_CCER_CC1E << 4 * (Channel-1); // CCxE mis à 1, x au Channel c
 //	Timer_Output.GPIO_Pin = Channel + 5;
 //	}
 //	MyGPIO_Init (&Timer_Output);
+}
+
+void Set_DutyCycle(TIM_TypeDef * Timer, char Channel, int Duty_Cycle){ //duty cycle ab,cd% -> abcd
+	int CCRx = ((Timer->ARR +1) * Duty_Cycle)/10000;
+	switch (Channel){
+		case 1:
+		Timer->CCR1 =CCRx;
+		break;
+		case 2:
+		Timer->CCR2 =CCRx;
+		break;
+		case 3:
+		Timer->CCR3 =CCRx;
+		break;
+		case 4:
+		Timer->CCR4 =CCRx;
+		break;
+	}
 }
