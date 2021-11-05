@@ -10,11 +10,12 @@ unsigned short PSC;
 } MyTimer_Struct_TypeDef ;
 /*
 *****************************************************************************************
-* @brief
+* @Initialisation du Périphérique Timer
 * @param -> Paramètre sous forme d ’ une structure ( son adresse ) contenant les
 informations de base
 * @Note -> Fonction à lancer syst ématiquement avant d ’ aller plus en détail dans les
 conf plus fin e s (PWM, codeur inc . . . )
+	@N.B. frequence de comtage du timer : Clock (72Meg par defaut) / (ARR+1*PSC+1)
 *************************************************************************************************
 */
 
@@ -33,7 +34,7 @@ void MyTimer_Incremental_Coder_Mode ( TIM_TypeDef * Timer );
 
 #define MyTimer_Base_Start(Timer) ( Timer->CR1 |= 0x1 << 0 )
 #define MyTimer_Base_Stop(Timer) ( Timer->CR1 &= !(0x1 << 0) )
-#endif
+
 /*
 **************************************************************************************************
 * @brief : Interruption de débordement du compteur (CNT > ARR)
@@ -56,13 +57,6 @@ void MyTimer_PWM(TIM_TypeDef * Timer , char Channel ) ;
 
 
 /* *
-* @brief Récupere la valeur de compteur pour le Timer et channel spécifié
-* @param . . . .
-* @Note
-*/
-int MyTimer_Poll(TIM_TypeDef * Timer) ;
-
-/* *
 * @brief Applique un rapport cyclique sur le channel déjà configuré en PWM
 * @param . . . .
 * @Note duty cycle ab,cd% -> abcd
@@ -75,3 +69,6 @@ void MyTimer_Set_DutyCycle(TIM_TypeDef * Timer, char Channel, int Duty_Cycle); /
 * @Note 
 */
 int MyTimer_Read_CNT(TIM_TypeDef * Timer);
+
+
+#endif

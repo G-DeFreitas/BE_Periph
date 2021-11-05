@@ -46,10 +46,6 @@ void MyTimer_Incremental_Coder_Mode ( TIM_TypeDef * Timer ){
 	Timer->CR1 |= TIM_CR1_CEN;
 }
 
-int MyTimer_Poll(TIM_TypeDef * Timer){
-	return Timer->CNT;
-}
-
 
 void MyTimer_ActiveIT (TIM_TypeDef * Timer, char Prio, void(*IT_function) (void)){
 
