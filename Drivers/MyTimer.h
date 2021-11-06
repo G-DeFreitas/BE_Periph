@@ -69,6 +69,7 @@ void MyTimer_Set_DutyCycle(TIM_TypeDef * Timer, char Channel, int Duty_Cycle); /
 * @Note 
 */
 int MyTimer_Read_CNT(TIM_TypeDef * Timer);
+void MyTimer_Write_CNT(TIM_TypeDef * Timer, int Value);
 
 
 #endif

@@ -8,16 +8,6 @@ void Interruption (void) {
 }
 
 
-//static MyGPIO_Struct_TypeDef LED_Externe;	
-
-//static MyGPIO_Struct_TypeDef Timer_Output;
-
-
-//void IT_function (void){
-
-//MyGPIO_Toggle(LED_Externe.GPIO, LED_Externe.GPIO_Pin) ;
-//}
-
 
 
 int main(){
@@ -28,10 +18,12 @@ int main(){
 	//// TEST DE LA COMMANDE DU SERVO
 	MonTimer.ARR = 10000-1;
 	MonTimer.PSC = 72-1;
-	MonTimer.Timer = TIM4;
+	MonTimer.Timer = TIM3;
 	MyTimer_Base_Init(&MonTimer);
-	MyTimer_ActiveIT(TIM4,3,Interruption);
-	MyTimer_Base_Start (TIM4);
+	MyTimer_ActiveIT(TIM3,3,Interruption);
+	MyTimer_Base_Start (TIM3);
+
+
 
 
 	while(1);

@@ -3,13 +3,13 @@
 #include "Driver_GPIO.h"
 #include <stdlib.h>
 
-#define TIMservo TIM3
-#define TIMservo_Channel 1
+#define TIMservo TIM1
+#define TIMservo_Channel 4
 #define TIMcoder TIM2
 #define GpioServo_out GPIOA
-#define PinServo_out 6
-#define GpioCoderIndex GPIOA
-#define PinCoderIndex 2
+#define PinServo_out 11
+#define GpioCoderIndex GPIOB
+#define PinCoderIndex 0
 
 static MyTimer_Struct_TypeDef MonTimer;
 static MyTimer_Struct_TypeDef MonServo;
@@ -17,22 +17,22 @@ static MyGPIO_Struct_TypeDef Timer_Output;
 static MyGPIO_Struct_TypeDef Coder_Index;
 
 void IT_function (void){
-
+	MyTimer_Write_CNT(TIMcoder, 0);
 }
 
 void bordage_Init_Codeur(){
 	MonTimer.Timer = TIMcoder;
 	MonTimer.ARR = 360-1; 
-	MonTimer.PSC = 2-1;
+	MonTimer.PSC = 6-1;
 	MyTimer_Base_Init ( &MonTimer );
 	MyTimer_Incremental_Coder_Mode(TIMcoder);
   MyTimer_Base_Start(TIMcoder);
 	
 	Coder_Index.GPIO = GpioCoderIndex;
 	Coder_Index.GPIO_Pin = PinCoderIndex;
-	Coder_Index.GPIO_Conf = In_PullDown;
+	Coder_Index.GPIO_Conf = In_Floating;
 	MyGPIO_Init (&Coder_Index);
-	//PA2 connecté a EXTI2
+	MyGPIO_Interrupt(GpioCoderIndex , IT_function , PinCoderIndex, 4) ;
 
 	
 //	MyTimer_ActiveIT(TIM2, 4, IT_function); // Interruption de débordement de CNT

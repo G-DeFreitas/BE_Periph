@@ -78,26 +78,26 @@ void MyTimer_ActiveIT (TIM_TypeDef * Timer, char Prio, void(*IT_function) (void)
 }
 
 	void TIM1_UP_IRQHandler(void){
-	TIM1->SR &= !TIM_SR_UIF;
+	TIM1->SR &= ~TIM_SR_UIF;
 	if (HandlerContent1 !=0){
 	(*HandlerContent1) ();
 	}
 }
 	
 		void TIM2_IRQHandler(void){
-	TIM2->SR &= !TIM_SR_UIF;
+	TIM2->SR &= ~TIM_SR_UIF;
 	if (HandlerContent2 !=0){
 	(*HandlerContent2) ();
 	}
 }
 			void TIM3_IRQHandler(void){
-	TIM3->SR &= !TIM_SR_UIF;
+	TIM3->SR &= ~TIM_SR_UIF;
 	if (HandlerContent3 !=0){
 	(*HandlerContent3) ();
 	}
 }
 		void TIM4_IRQHandler(void){
-	TIM4->SR &= !TIM_SR_UIF;
+	TIM4->SR &= ~TIM_SR_UIF;
 	if (HandlerContent4 !=0){
 	(*HandlerContent4) ();
 	}
@@ -179,3 +179,7 @@ void MyTimer_Set_DutyCycle(TIM_TypeDef * Timer, char Channel, int Duty_Cycle){ /
 int MyTimer_Read_CNT(TIM_TypeDef * Timer){
 	return Timer->CNT;
 }
+void MyTimer_Write_CNT(TIM_TypeDef * Timer, int Value){
+	 Timer->CNT = Value;
+}
+
