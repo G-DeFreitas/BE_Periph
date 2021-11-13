@@ -39,8 +39,13 @@ void bordage_Init_Codeur(){
 }
 
 int bordage_calcul_rapport_cyclique(int angle){
+	if (angle <= 45 || angle >= 315){
+	return 1000;
+	}
+	else {
 	int alpha = abs(angle - 180);
 	return ((alpha)*500/135 + 6700/20);
+	}
 }
 
 void bordage_init_servo(){
