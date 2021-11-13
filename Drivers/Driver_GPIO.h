@@ -22,4 +22,13 @@ int MyGPIO_Read(GPIO_TypeDef * GPIO , char GPIO_Pin ) ; // renvoie 0 ou autre ch
 void MyGPIO_Set(GPIO_TypeDef * GPIO , char GPIO_Pin ) ;
 void MyGPIO_Reset(GPIO_TypeDef * GPIO , char GPIO_Pin ) ;
 void MyGPIO_Toggle(GPIO_TypeDef * GPIO , char GPIO_Pin ) ;
+
+/*
+*****************************************************************************************
+* @Mise d'une pin de GPIO en interruption externe sur front montant
+* @param -> GPIO, fonction à executer en interruption, pin entre 0 et 3, priorité de l'interruption
+* @Note -> Le Gpio doit être initalisé
+*************************************************************************************************
+*/
+void MyGPIO_Interrupt(GPIO_TypeDef * GPIO , void(*IT_function) (void),char GPIO_Pin, char Prio) ;
 #endif

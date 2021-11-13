@@ -1,6 +1,11 @@
 #include "stm32f10x.h"
 #include "Driver_GPIO.h"
 
+static void (*HandlerContent0)(void);
+static void (*HandlerContent1)(void);
+static void (*HandlerContent2)(void);
+static void (*HandlerContent3)(void);
+
 void MyGPIO_Init ( MyGPIO_Struct_TypeDef * GPIOStructPtr ) {
 	if (GPIOStructPtr->GPIO == GPIOA){
 	RCC->APB2ENR |= RCC_APB2ENR_IOPAEN;
@@ -54,3 +59,62 @@ void MyGPIO_Reset(GPIO_TypeDef * GPIO , char GPIO_Pin ) {
 void MyGPIO_Toggle(GPIO_TypeDef * GPIO , char GPIO_Pin ) {
 		GPIO->ODR ^= (0x1 << GPIO_Pin);
 }
+
+void MyGPIO_Interrupt(GPIO_TypeDef * GPIO , void(*IT_function) (void) , char GPIO_Pin, char Prio){
+	int mask;
+	if (GPIO == GPIOA) {
+		mask = AFIO_EXTICR1_EXTI0_PA;
+	}
+	else if (GPIO == GPIOB) {
+		mask = AFIO_EXTICR1_EXTI0_PB;
+	}
+	else if (GPIO == GPIOC) {
+		mask = AFIO_EXTICR1_EXTI0_PC;
+	}
+	else if (GPIO == GPIOD) {
+		mask = AFIO_EXTICR1_EXTI0_PD;
+	}
+	RCC->APB2ENR |= RCC_APB2ENR_AFIOEN;
+	AFIO->EXTICR[0] |= mask << 4*GPIO_Pin;
+	EXTI->RTSR |= EXTI_RTSR_TR0 << GPIO_Pin ;
+	EXTI->FTSR &= ~(EXTI_RTSR_TR0) << GPIO_Pin;
+	EXTI->IMR |= EXTI_IMR_MR0 << GPIO_Pin;
+	EXTI->PR |= EXTI_PR_PR0 << GPIO_Pin;
+	switch (GPIO_Pin) {
+	case 0 :
+ 	HandlerContent0 = IT_function;
+	break;
+	case 1 :
+ HandlerContent1 = IT_function;
+	break;
+	case 2 :
+  HandlerContent2 = IT_function;
+	break;
+	case 3 :
+  HandlerContent3 = IT_function;
+	break;
+	} 
+	NVIC->IP[EXTI0_IRQn + GPIO_Pin] = Prio <<4;
+	NVIC->ISER[0] |= NVIC_ISER_SETENA_6 << GPIO_Pin;
+}
+
+
+
+
+	void EXTI0_IRQHandler(void){
+		EXTI->PR |= EXTI_PR_PR0;
+		if (HandlerContent0 !=0){(*HandlerContent0) ();}
+	}
+
+		void EXTI1_IRQHandler(void){
+		EXTI->PR |= EXTI_PR_PR1;
+		if (HandlerContent1 !=0){(*HandlerContent1) ();}
+	}
+			void EXTI2_IRQHandler(void){
+		EXTI->PR |= EXTI_PR_PR2;
+		if (HandlerContent2 !=0){(*HandlerContent2) ();}
+	}
+				void EXTI3_IRQHandler(void){
+		EXTI->PR |= EXTI_PR_PR3;
+		if (HandlerContent3 !=0){(*HandlerContent3) ();}
+	}
