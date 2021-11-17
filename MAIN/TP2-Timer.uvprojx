@@ -433,6 +433,11 @@
               <FileType>1</FileType>
               <FilePath>..\Services\Timing.c</FilePath>
             </File>
+            <File>
+              <FileName>MyTransmission.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\Services\MyTransmission.c</FilePath>
+            </File>
           </Files>
         </Group>
         <Group>
@@ -869,6 +874,11 @@
               <FileName>Timing.c</FileName>
               <FileType>1</FileType>
               <FilePath>..\Services\Timing.c</FilePath>
+            </File>
+            <File>
+              <FileName>MyTransmission.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\Services\MyTransmission.c</FilePath>
             </File>
           </Files>
         </Group>
