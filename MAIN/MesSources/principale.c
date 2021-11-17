@@ -2,7 +2,7 @@
 #include "direction.h"
 #include "Timing.h"
 
-void Ordonnacement (void) {
+void Ordonnancement (void) {
 	bordage_Orienter_Servo(bordage_calcul_rapport_cyclique(bordage_get_angle()));
 }
 
@@ -12,7 +12,7 @@ int main(){
 	bordage_Orienter_Servo(bordage_calcul_rapport_cyclique(bordage_get_angle()));	
 	direction_InitUart();
 	direction_Orienter_Bateau();
-	Timing_Ordre(Ordonnacement);
+	Timing_Ordre(Ordonnancement);
 
 	while(1);
 }

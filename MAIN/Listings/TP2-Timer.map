@@ -4,9 +4,9 @@ Component: ARM Compiler 5.06 update 7 (build 960) Tool: armlink [4d3601]
 
 Section Cross References
 
-    principale.o(i.OrientationVoiles) refers to bordage.o(i.bordage_get_angle) for bordage_get_angle
-    principale.o(i.OrientationVoiles) refers to bordage.o(i.bordage_calcul_rapport_cyclique) for bordage_calcul_rapport_cyclique
-    principale.o(i.OrientationVoiles) refers to bordage.o(i.bordage_Orienter_Servo) for bordage_Orienter_Servo
+    principale.o(i.Ordonnancement) refers to bordage.o(i.bordage_get_angle) for bordage_get_angle
+    principale.o(i.Ordonnancement) refers to bordage.o(i.bordage_calcul_rapport_cyclique) for bordage_calcul_rapport_cyclique
+    principale.o(i.Ordonnancement) refers to bordage.o(i.bordage_Orienter_Servo) for bordage_Orienter_Servo
     principale.o(i.main) refers to bordage.o(i.bordage_Init_Codeur) for bordage_Init_Codeur
     principale.o(i.main) refers to bordage.o(i.bordage_init_servo) for bordage_init_servo
     principale.o(i.main) refers to bordage.o(i.bordage_get_angle) for bordage_get_angle
@@ -15,7 +15,7 @@ Section Cross References
     principale.o(i.main) refers to direction.o(i.direction_InitUart) for direction_InitUart
     principale.o(i.main) refers to direction.o(i.direction_Orienter_Bateau) for direction_Orienter_Bateau
     principale.o(i.main) refers to timing.o(i.Timing_Ordre) for Timing_Ordre
-    principale.o(i.main) refers to principale.o(i.OrientationVoiles) for OrientationVoiles
+    principale.o(i.main) refers to principale.o(i.Ordonnancement) for Ordonnancement
     mytimer.o(i.MyTimer_ActiveIT) refers to mytimer.o(.data) for HandlerContent1
     mytimer.o(i.TIM1_UP_IRQHandler) refers to mytimer.o(.data) for HandlerContent1
     mytimer.o(i.TIM2_IRQHandler) refers to mytimer.o(.data) for HandlerContent2
@@ -244,7 +244,7 @@ Image Symbol Table
     i.MyUSART_Active_IT                      0x0800071c   Section        0  myusart.o(i.MyUSART_Active_IT)
     i.MyUSART_Get_Byte                       0x080007c0   Section        0  myusart.o(i.MyUSART_Get_Byte)
     i.MyUSART_Init                           0x080007c8   Section        0  myusart.o(i.MyUSART_Init)
-    i.OrientationVoiles                      0x08000880   Section        0  principale.o(i.OrientationVoiles)
+    i.Ordonnancement                         0x08000880   Section        0  principale.o(i.Ordonnancement)
     i.SetSysClock                            0x08000894   Section        0  system_stm32f10x.o(i.SetSysClock)
     SetSysClock                              0x08000895   Thumb Code     8  system_stm32f10x.o(i.SetSysClock)
     i.SetSysClockTo72                        0x0800089c   Section        0  system_stm32f10x.o(i.SetSysClockTo72)
@@ -389,7 +389,7 @@ Image Symbol Table
     MyUSART_Active_IT                        0x0800071d   Thumb Code   132  myusart.o(i.MyUSART_Active_IT)
     MyUSART_Get_Byte                         0x080007c1   Thumb Code     8  myusart.o(i.MyUSART_Get_Byte)
     MyUSART_Init                             0x080007c9   Thumb Code   158  myusart.o(i.MyUSART_Init)
-    OrientationVoiles                        0x08000881   Thumb Code    20  principale.o(i.OrientationVoiles)
+    Ordonnancement                           0x08000881   Thumb Code    20  principale.o(i.Ordonnancement)
     SystemInit                               0x0800097d   Thumb Code    78  system_stm32f10x.o(i.SystemInit)
     TIM1_UP_IRQHandler                       0x080009dd   Thumb Code    28  mytimer.o(i.TIM1_UP_IRQHandler)
     TIM2_IRQHandler                          0x08000a01   Thumb Code    32  mytimer.o(i.TIM2_IRQHandler)
@@ -464,7 +464,7 @@ Memory Map of the image
     0x0800071c   0x0800071c   0x000000a4   Code   RO          270    i.MyUSART_Active_IT  myusart.o
     0x080007c0   0x080007c0   0x00000008   Code   RO          271    i.MyUSART_Get_Byte  myusart.o
     0x080007c8   0x080007c8   0x000000b8   Code   RO          272    i.MyUSART_Init      myusart.o
-    0x08000880   0x08000880   0x00000014   Code   RO            1    i.OrientationVoiles  principale.o
+    0x08000880   0x08000880   0x00000014   Code   RO            1    i.Ordonnancement    principale.o
     0x08000894   0x08000894   0x00000008   Code   RO          461    i.SetSysClock       system_stm32f10x.o
     0x0800089c   0x0800089c   0x000000e0   Code   RO          462    i.SetSysClockTo72   system_stm32f10x.o
     0x0800097c   0x0800097c   0x00000060   Code   RO          464    i.SystemInit        system_stm32f10x.o
@@ -521,18 +521,18 @@ Image component sizes
 
       Code (inc. data)   RO Data    RW Data    ZI Data      Debug   Object Name
 
-       290         40          0         32          0       3480   bordage.o
-       316         66          0         41         12       1960   direction.o
-       740        106          0         16          0       5793   driver_gpio.o
-       874         86          0         16          0     212356   mytimer.o
-       464         82          0         12          0       4494   myusart.o
-        68          6          0          0          0       2411   principale.o
-        36          8        236          0       1024        844   startup_stm32f10x_md.o
-       328         28          0          0          0       2133   system_stm32f10x.o
-        60         10          0          8          0        775   timing.o
+       290         40          0         32          0       3440   bordage.o
+       316         66          0         41         12       1940   direction.o
+       740        106          0         16          0       5741   driver_gpio.o
+       874         86          0         16          0     212276   mytimer.o
+       464         82          0         12          0       4446   myusart.o
+        68          6          0          0          0       2396   principale.o
+        36          8        236          0       1024        840   startup_stm32f10x_md.o
+       328         28          0          0          0       2117   system_stm32f10x.o
+        60         10          0          8          0        767   timing.o
 
     ----------------------------------------------------------------------
-      3180        432        268        128       1040     234246   Object Totals
+      3180        432        268        128       1040     233963   Object Totals
          0          0         32          0          0          0   (incl. Generated)
          4          0          0          3          4          0   (incl. Padding)
 
@@ -572,8 +572,8 @@ Image component sizes
 
       Code (inc. data)   RO Data    RW Data    ZI Data      Debug   
 
-      3272        448        268        128       1040     232542   Grand Totals
-      3272        448        268        128       1040     232542   ELF Image Totals
+      3272        448        268        128       1040     232259   Grand Totals
+      3272        448        268        128       1040     232259   ELF Image Totals
       3272        448        268        128          0          0   ROM Totals
 
 ==============================================================================

@@ -3,11 +3,11 @@
 <title>Static Call Graph - [.\Objects\TP2-Timer.axf]</title></head>
 <body><HR>
 <H1>Static Call Graph for image .\Objects\TP2-Timer.axf</H1><HR>
-<BR><P>#&#060CALLGRAPH&#062# ARM Linker, 5060960: Last Updated: Wed Nov 10 12:21:28 2021
+<BR><P>#&#060CALLGRAPH&#062# ARM Linker, 5060960: Last Updated: Wed Nov 17 09:51:05 2021
 <BR><P>
 <H3>Maximum Stack Usage =         36 bytes + Unknown(Cycles, Untraceable Function Pointers)</H3><H3>
 Call chain for Maximum Stack Depth:</H3>
-OrientationVoiles &rArr; bordage_Orienter_Servo &rArr; MyTimer_Set_DutyCycle
+Ordonnancement &rArr; bordage_Orienter_Servo &rArr; MyTimer_Set_DutyCycle
 <P>
 <H3>
 Mutually Recursive functions
@@ -54,7 +54,7 @@ Function Pointers
  <LI><a href="#[38]">IT_function</a> from bordage.o(i.IT_function) referenced from bordage.o(i.bordage_Init_Codeur)
  <LI><a href="#[3]">MemManage_Handler</a> from startup_stm32f10x_md.o(.text) referenced from startup_stm32f10x_md.o(RESET)
  <LI><a href="#[1]">NMI_Handler</a> from startup_stm32f10x_md.o(.text) referenced from startup_stm32f10x_md.o(RESET)
- <LI><a href="#[3a]">OrientationVoiles</a> from principale.o(i.OrientationVoiles) referenced from principale.o(i.main)
+ <LI><a href="#[3a]">Ordonnancement</a> from principale.o(i.Ordonnancement) referenced from principale.o(i.main)
  <LI><a href="#[b]">PVD_IRQHandler</a> from startup_stm32f10x_md.o(.text) referenced from startup_stm32f10x_md.o(RESET)
  <LI><a href="#[8]">PendSV_Handler</a> from startup_stm32f10x_md.o(.text) referenced from startup_stm32f10x_md.o(RESET)
  <LI><a href="#[f]">RCC_IRQHandler</a> from startup_stm32f10x_md.o(.text) referenced from startup_stm32f10x_md.o(RESET)
@@ -386,8 +386,8 @@ Global Symbols
 <BR><BR>[Called By]<UL><LI><a href="#[53]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;direction_InitUart
 </UL>
 
-<P><STRONG><a name="[3a]"></a>OrientationVoiles</STRONG> (Thumb, 20 bytes, Stack size 16 bytes, principale.o(i.OrientationVoiles))
-<BR><BR>[Stack]<UL><LI>Max Depth = 36<LI>Call Chain = OrientationVoiles &rArr; bordage_Orienter_Servo &rArr; MyTimer_Set_DutyCycle
+<P><STRONG><a name="[3a]"></a>Ordonnancement</STRONG> (Thumb, 20 bytes, Stack size 16 bytes, principale.o(i.Ordonnancement))
+<BR><BR>[Stack]<UL><LI>Max Depth = 36<LI>Call Chain = Ordonnancement &rArr; bordage_Orienter_Servo &rArr; MyTimer_Set_DutyCycle
 </UL>
 <BR>[Calls]<UL><LI><a href="#[40]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;bordage_get_angle
 <LI><a href="#[41]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;bordage_calcul_rapport_cyclique
@@ -480,12 +480,12 @@ Global Symbols
 <BR>[Calls]<UL><LI><a href="#[4c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;MyTimer_Set_DutyCycle
 </UL>
 <BR>[Called By]<UL><LI><a href="#[35]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;main
-<LI><a href="#[3a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;OrientationVoiles
+<LI><a href="#[3a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Ordonnancement
 </UL>
 
 <P><STRONG><a name="[41]"></a>bordage_calcul_rapport_cyclique</STRONG> (Thumb, 52 bytes, Stack size 0 bytes, bordage.o(i.bordage_calcul_rapport_cyclique))
 <BR><BR>[Called By]<UL><LI><a href="#[35]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;main
-<LI><a href="#[3a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;OrientationVoiles
+<LI><a href="#[3a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Ordonnancement
 </UL>
 
 <P><STRONG><a name="[40]"></a>bordage_get_angle</STRONG> (Thumb, 12 bytes, Stack size 8 bytes, bordage.o(i.bordage_get_angle))
@@ -494,7 +494,7 @@ Global Symbols
 <BR>[Calls]<UL><LI><a href="#[51]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;MyTimer_Read_CNT
 </UL>
 <BR>[Called By]<UL><LI><a href="#[35]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;main
-<LI><a href="#[3a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;OrientationVoiles
+<LI><a href="#[3a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Ordonnancement
 </UL>
 
 <P><STRONG><a name="[52]"></a>bordage_init_servo</STRONG> (Thumb, 70 bytes, Stack size 8 bytes, bordage.o(i.bordage_init_servo))
