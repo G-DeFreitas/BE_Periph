@@ -84,3 +84,7 @@ void USART3_IRQHandler(void){
 	(*HandlerUart3) ();
 	}
 	}
+
+	void MyUSART_Send_Byte(USART_TypeDef * Uart, char Byte){
+		Uart->DR =  Byte;
+	}
