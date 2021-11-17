@@ -10,6 +10,7 @@ void MyTransmission_InitADCbat(void);
 //Renvoie 0 si Batterie "pleine" et 1 si batterie faible
 int MyTransmission_BatterieFaible(char RefBatFaible);
 
-void MyTransmission_Send(MyUART_Struct_TypeDef MyUart);
+void MyTransmission_InitUart(void);
+void MyTransmission_Send(int angle);
 
 #endif
