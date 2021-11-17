@@ -419,14 +419,9 @@
           <GroupName>MesServices</GroupName>
           <Files>
             <File>
-              <FileName>bordage.c</FileName>
+              <FileName>MyTransmission.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\Services\bordage.c</FilePath>
-            </File>
-            <File>
-              <FileName>direction.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\Services\direction.c</FilePath>
+              <FilePath>..\Services\MyTransmission.c</FilePath>
             </File>
             <File>
               <FileName>Timing.c</FileName>
@@ -856,14 +851,9 @@
           <GroupName>MesServices</GroupName>
           <Files>
             <File>
-              <FileName>bordage.c</FileName>
+              <FileName>MyTransmission.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\Services\bordage.c</FilePath>
-            </File>
-            <File>
-              <FileName>direction.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\Services\direction.c</FilePath>
+              <FilePath>..\Services\MyTransmission.c</FilePath>
             </File>
             <File>
               <FileName>Timing.c</FileName>

@@ -75,7 +75,7 @@
       <OPTFL>
         <tvExp>1</tvExp>
         <tvExpOptDlg>0</tvExpOptDlg>
-        <IsCurrentTarget>1</IsCurrentTarget>
+        <IsCurrentTarget>0</IsCurrentTarget>
       </OPTFL>
       <CpuCode>18</CpuCode>
       <DebugOpt>
@@ -161,7 +161,7 @@
           <SizeOfObject>0</SizeOfObject>
           <BreakByAccess>0</BreakByAccess>
           <BreakIfRCount>0</BreakIfRCount>
-          <Filename>..\Services\bordage.c</Filename>
+          <Filename>C:\Users\Gdefr\Documents\2.Travail\INSA\4A\S7\BE Périphériques\BE_Periph\Services\bordage.c</Filename>
           <ExecCommand></ExecCommand>
           <Expression></Expression>
         </Bp>
@@ -288,7 +288,7 @@
       <OPTFL>
         <tvExp>1</tvExp>
         <tvExpOptDlg>0</tvExpOptDlg>
-        <IsCurrentTarget>0</IsCurrentTarget>
+        <IsCurrentTarget>1</IsCurrentTarget>
       </OPTFL>
       <CpuCode>18</CpuCode>
       <DebugOpt>
@@ -338,7 +338,7 @@
         <SetRegEntry>
           <Number>0</Number>
           <Key>DLGDARM</Key>
-          <Name>(1010=779,71,1155,628,0)(1007=-1,-1,-1,-1,0)(1008=-1,-1,-1,-1,0)(1009=-1,-1,-1,-1,0)(100=18,18,664,691,0)(110=60,88,280,548,0)(111=742,35,962,495,0)(1011=-1,-1,-1,-1,0)(180=-1,-1,-1,-1,0)(120=438,118,859,545,0)(121=114,373,535,800,0)(122=-1,-1,-1,-1,0)(123=-1,-1,-1,-1,0)(140=305,460,993,800,0)(240=784,227,1183,572,0)(190=-1,-1,-1,-1,0)(200=-1,-1,-1,-1,0)(170=120,153,405,449,0)(130=271,261,865,1012,1)(131=444,5,1038,756,0)(132=519,0,1113,751,0)(133=355,0,949,751,0)(160=-1,-1,-1,-1,0)(161=-1,-1,-1,-1,0)(162=-1,-1,-1,-1,0)(210=-1,-1,-1,-1,0)(211=-1,-1,-1,-1,0)(220=-1,-1,-1,-1,0)(221=-1,-1,-1,-1,0)(230=-1,-1,-1,-1,0)(234=-1,-1,-1,-1,0)(231=-1,-1,-1,-1,0)(232=-1,-1,-1,-1,0)(233=-1,-1,-1,-1,0)(150=677,15,1280,766,0)(151=-1,-1,-1,-1,0)</Name>
+          <Name>(1010=779,71,1155,628,0)(1007=-1,-1,-1,-1,0)(1008=-1,-1,-1,-1,0)(1009=-1,-1,-1,-1,0)(100=18,18,664,691,0)(110=60,88,280,548,0)(111=742,35,962,495,0)(1011=-1,-1,-1,-1,0)(180=-1,-1,-1,-1,0)(120=438,118,859,545,0)(121=114,373,535,800,0)(122=-1,-1,-1,-1,0)(123=-1,-1,-1,-1,0)(140=305,460,993,800,0)(240=784,227,1183,572,0)(190=-1,-1,-1,-1,0)(200=-1,-1,-1,-1,0)(170=120,153,405,449,0)(130=271,49,865,800,0)(131=444,5,1038,756,0)(132=519,0,1113,751,0)(133=355,0,949,751,0)(160=-1,-1,-1,-1,0)(161=-1,-1,-1,-1,0)(162=-1,-1,-1,-1,0)(210=-1,-1,-1,-1,0)(211=-1,-1,-1,-1,0)(220=-1,-1,-1,-1,0)(221=-1,-1,-1,-1,0)(230=-1,-1,-1,-1,0)(234=-1,-1,-1,-1,0)(231=-1,-1,-1,-1,0)(232=-1,-1,-1,-1,0)(233=-1,-1,-1,-1,0)(150=860,287,1463,1038,1)(151=-1,-1,-1,-1,0)</Name>
         </SetRegEntry>
         <SetRegEntry>
           <Number>0</Number>
@@ -355,7 +355,7 @@
         <Bp>
           <Number>0</Number>
           <Type>0</Type>
-          <LineNumber>20</LineNumber>
+          <LineNumber>23</LineNumber>
           <EnabledFlag>1</EnabledFlag>
           <Address>134218454</Address>
           <ByteObject>0</ByteObject>
@@ -364,9 +364,9 @@
           <SizeOfObject>0</SizeOfObject>
           <BreakByAccess>0</BreakByAccess>
           <BreakIfRCount>1</BreakIfRCount>
-          <Filename>C:\Users\Gdefr\Documents\2.Travail\INSA\4A\S7\BE PÃ©riphÃ©riques\Services\bordage.c</Filename>
+          <Filename>C:\Users\Gdefr\Documents\2.Travail\INSA\4A\S7\BE PÃ©riphÃ©riques\BE_Periph\Services\MyTransmission.c</Filename>
           <ExecCommand></ExecCommand>
-          <Expression>\\TP2_Timer\../Services/bordage.c\20</Expression>
+          <Expression>\\TP2_Timer\../Services/MyTransmission.c\23</Expression>
         </Bp>
       </Breakpoint>
       <Tracepoint>
@@ -517,26 +517,14 @@
       <tvExp>0</tvExp>
       <tvExpOptDlg>0</tvExpOptDlg>
       <bDave2>0</bDave2>
-      <PathWithFileName>..\Services\bordage.c</PathWithFileName>
-      <FilenameWithoutPath>bordage.c</FilenameWithoutPath>
+      <PathWithFileName>..\Services\MyTransmission.c</PathWithFileName>
+      <FilenameWithoutPath>MyTransmission.c</FilenameWithoutPath>
       <RteFlg>0</RteFlg>
       <bShared>0</bShared>
     </File>
     <File>
       <GroupNumber>3</GroupNumber>
       <FileNumber>7</FileNumber>
-      <FileType>1</FileType>
-      <tvExp>0</tvExp>
-      <tvExpOptDlg>0</tvExpOptDlg>
-      <bDave2>0</bDave2>
-      <PathWithFileName>..\Services\direction.c</PathWithFileName>
-      <FilenameWithoutPath>direction.c</FilenameWithoutPath>
-      <RteFlg>0</RteFlg>
-      <bShared>0</bShared>
-    </File>
-    <File>
-      <GroupNumber>3</GroupNumber>
-      <FileNumber>8</FileNumber>
       <FileType>1</FileType>
       <tvExp>0</tvExp>
       <tvExpOptDlg>0</tvExpOptDlg>

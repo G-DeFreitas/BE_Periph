@@ -1,19 +1,9 @@
-#include "bordage.h"
-#include "direction.h"
-#include "Timing.h"
-
-void Ordonnancement (void) {
-	bordage_Orienter_Servo(bordage_calcul_rapport_cyclique(bordage_get_angle()));
-}
-
+#include "MyTransmission.h"
 int main(){
-	bordage_Init_Codeur();
-	bordage_init_servo();
-	bordage_Orienter_Servo(bordage_calcul_rapport_cyclique(bordage_get_angle()));	
-	direction_InitUart();
-	direction_Orienter_Bateau();
-	Timing_Ordre(Ordonnancement);
+MyTransmission_InitADCbat();
 
-	while(1);
+	while(1){
+	BatterieFaible(20);
+	}	
 }
 
