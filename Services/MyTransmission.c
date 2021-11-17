@@ -105,21 +105,21 @@ void MyTransmission_Send(int angle){
 		int i;
 		for (i=0; i<15;i++){
 			MyUSART_Send_Byte(muart.Uart, bat_faible[i]);
-			while((muart.Uart->SR & USART_SR_TXE) ==0);
+			while(MyUSART_WaitOnSend(muart));
 			}
 		MyUSART_Send_Byte(muart.Uart, '\n');
-		while((muart.Uart->SR & USART_SR_TXE) ==0);
+		while(MyUSART_WaitOnSend(muart));
 	}
 	else
 	{
 		int i;
 		for (i=0; i<7;i++){
 			MyUSART_Send_Byte(muart.Uart, msg_angle[i]);
-			while((muart.Uart->SR & USART_SR_TXE) == 0);
+			while(MyUSART_WaitOnSend(muart));
 		}
 		for (i=0; i<3;i++){
 			MyUSART_Send_Byte(muart.Uart, toArray(angle)[i]);
-			while((muart.Uart->SR & USART_SR_TXE) == 0);
+			while(MyUSART_WaitOnSend(muart));
 		}
 		MyUSART_Send_Byte(muart.Uart, '\n');
 		while((muart.Uart->SR & USART_SR_TXE) ==0);

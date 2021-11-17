@@ -33,6 +33,9 @@ void MyUSART_Init( MyUART_Struct_TypeDef * MyUart);
 //Envoi
 #define MyUSART_Transmission() ( USART1 -> CR1 |= USART_CR1_TE )
 
+
+//
+#define MyUSART_WaitOnSend(muart) ((muart.Uart->SR & USART_SR_TXE) == 0)
 char MyUSART_Get_Byte(USART_TypeDef * Uart);
 
 //
