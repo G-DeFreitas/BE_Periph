@@ -35,6 +35,8 @@ void MyUSART_Init( MyUART_Struct_TypeDef * MyUart);
 
 char MyUSART_Get_Byte(USART_TypeDef * Uart);
 
+//
+void MyUSART_Send_Byte(USART_TypeDef * Uart, char Byte);
 //Activer Interruption
 void MyUSART_Active_IT (MyUART_Struct_TypeDef * MyUart, void(*IT_function) (void));
 
