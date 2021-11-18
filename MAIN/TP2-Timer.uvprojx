@@ -413,6 +413,11 @@
               <FileType>1</FileType>
               <FilePath>..\Drivers\MyUSART.c</FilePath>
             </File>
+            <File>
+              <FileName>MySPI.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\Drivers\MySPI.c</FilePath>
+            </File>
           </Files>
         </Group>
         <Group>
@@ -437,6 +442,16 @@
               <FileName>MyTransmission.c</FileName>
               <FileType>1</FileType>
               <FilePath>..\Services\MyTransmission.c</FilePath>
+            </File>
+            <File>
+              <FileName>Chavirement.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\Services\Chavirement.c</FilePath>
+            </File>
+            <File>
+              <FileName>adxl.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\Services\adxl.c</FilePath>
             </File>
           </Files>
         </Group>
@@ -855,6 +870,11 @@
               <FileType>1</FileType>
               <FilePath>..\Drivers\MyUSART.c</FilePath>
             </File>
+            <File>
+              <FileName>MySPI.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\Drivers\MySPI.c</FilePath>
+            </File>
           </Files>
         </Group>
         <Group>
@@ -879,6 +899,16 @@
               <FileName>MyTransmission.c</FileName>
               <FileType>1</FileType>
               <FilePath>..\Services\MyTransmission.c</FilePath>
+            </File>
+            <File>
+              <FileName>Chavirement.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\Services\Chavirement.c</FilePath>
+            </File>
+            <File>
+              <FileName>adxl.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\Services\adxl.c</FilePath>
             </File>
           </Files>
         </Group>
