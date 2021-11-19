@@ -73,6 +73,7 @@ void adxl_init(MySPI_Struct_TypeDef mspi){
 	adxl_Transmit(0x2d, 0x00, mspi);  // reset all bits
 	adxl_Transmit(0x2d, 0x08, mspi);  // measure and wake up 8hz
 	adxl_Transmit(0x31, 0x01, mspi);  // data_format range= +- 4g
+
 }
 
 /*

@@ -79,15 +79,12 @@ void MySPI_Init (MySPI_Struct_TypeDef * MySPI) {
 }
 
 char MySPI_ReadWrite(int toSend, MySPI_Struct_TypeDef * MySPI) {
-	//Voir page 743
-	//On récupère la valeur du flag TXE
-
 	//On attend qu'il soit vide pour attribuer la valeur toSend à DR
-	while ( (MySPI->SPI->SR & SPI_SR_TXE)==0){}
+	while ( !(MySPI->SPI->SR & SPI_SR_TXE));
 	MySPI->SPI->DR = toSend;
 	
 	//On attend qu'il soit plein pour lire
-	while (!(MySPI->SPI->SR & SPI_SR_RXNE)){}
+	while (!(MySPI->SPI->SR & SPI_SR_RXNE));
 	return MySPI->SPI->DR;
 }
 
