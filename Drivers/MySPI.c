@@ -1,6 +1,6 @@
 #include "MySPI.h"
 
-void MySPI_Init (MySPI_Struct_TypeDef * MySPI) {
+void MySPI_Init () {
 	
 	MyGPIO_Struct_TypeDef nss;
 	MyGPIO_Struct_TypeDef mosi;
@@ -11,41 +11,46 @@ void MySPI_Init (MySPI_Struct_TypeDef * MySPI) {
 	RCC->APB2ENR |= RCC_APB2ENR_SPI1EN;
 	
 	//Selection de BR 
-	MySPI->SPI->CR1  |= SPI_CR1_BR_0;
-	MySPI->SPI->CR1 |= SPI_CR1_BR_1;
-	MySPI->SPI->CR1 |= SPI_CR1_BR_2;
+	SPI->CR1  |= SPI_CR1_BR_0;
+	SPI->CR1 |= SPI_CR1_BR_1;
+	SPI->CR1 |= SPI_CR1_BR_2;
 	
 	//Selectionner CPOL et CPHA à 1
-	MySPI->SPI->CR1 |=  SPI_CR1_CPOL;
-	MySPI->SPI->CR1 |= SPI_CR1_CPHA ;
+	SPI->CR1 |=  SPI_CR1_CPOL;
+	SPI->CR1 |= SPI_CR1_CPHA ;
 	
 	//spe a zero pour cofig dff
-	MySPI->SPI->CR1 &= ~SPI_CR1_SPE;
+	SPI->CR1 &= ~SPI_CR1_SPE;
 	
 	//Set le bit DFF pour le format 8 bit 
-	MySPI->SPI->CR1 &= ~(SPI_CR1_DFF);
+	SPI->CR1 &= ~(SPI_CR1_DFF);
 	
 	// bit LSBFIRST dans CR1 pour le format, transmet le MSB en premier
-	MySPI->SPI->CR1 &= ~(SPI_CR1_LSBFIRST);
+	SPI->CR1 &= ~(SPI_CR1_LSBFIRST);
 	
 	
 	//NSS
-	MySPI->SPI->CR1 |= SPI_CR1_SSM;
-	MySPI->SPI->CR1 |= SPI_CR1_SSI;
+	SPI->CR1 |= SPI_CR1_SSM;
+	SPI->CR1 |= SPI_CR1_SSI;
 	
 	// RXONLY = 0, full-duplex
-	MySPI->SPI->CR1 &= ~SPI_CR1_RXONLY;
+	SPI->CR1 &= ~SPI_CR1_RXONLY;
+	
+	SPI->CR2 = 0;
 	
 	//MSTR et SPE à 1
-	MySPI->SPI->CR1 |= SPI_CR1_MSTR;
-	MySPI->SPI->CR1 |= SPI_CR1_SPE;
+	SPI->CR1 |= SPI_CR1_MSTR;
+	SPI->CR1 |= SPI_CR1_SPE;
 	
-	MySPI->SPI->CR2 = 0;
+	//Attendre plus BUSY
+	while ((SPI->SR & SPI_SR_BSY)){}
+	
+	
 	//Config GPIO
 	
 	//pin MISO en GPIO input
 	miso.GPIO = GPIO_SPI1;
-	miso.GPIO_Conf = In_PullUp;
+	miso.GPIO_Conf = In_Floating;
 	miso.GPIO_Pin = MISOPin_SPI1;
 	MyGPIO_Init ( &miso );
 	
@@ -78,25 +83,52 @@ void MySPI_Init (MySPI_Struct_TypeDef * MySPI) {
 	CS_Set();
 }
 
-char MySPI_ReadWrite(int toSend, MySPI_Struct_TypeDef * MySPI) {
+/*
+char MySPI_ReadWrite(int toSend) {
 	//Voir page 743
 	//On récupère la valeur du flag TXE
 
 	//On attend qu'il soit vide pour attribuer la valeur toSend à DR
-	while ( (MySPI->SPI->SR & SPI_SR_TXE)==0){}
-	MySPI->SPI->DR = toSend;
+	while ( (SPI->SR & SPI_SR_TXE)==0){}
+	SPI->DR = toSend;
 	
 	//On attend qu'il soit plein pour lire
-	while (!(MySPI->SPI->SR & SPI_SR_RXNE)){}
-	return MySPI->SPI->DR;
+	while (!(SPI->SR & SPI_SR_RXNE)){}
+	return SPI->DR;
+}
+*/
+
+void MySPI_Transmit (int toSend){
+	int clear;
+	
+	while (!((SPI->SR) & (SPI_SR_TXE)));
+	SPI->DR = toSend;
+	
+	while (!((SPI->SR) & (SPI_SR_TXE)));
+	
+	while (((SPI->SR) & (SPI_SR_BSY)));
+	
+		clear = SPI->DR; // Overrun Flag
+		clear = SPI->SR;
 }
 
-void SPI_Enable (MySPI_Struct_TypeDef * MySPI)
-{    MySPI->SPI->CR1 |= (SPI_CR1_SPE);   // SPE=1, Peripheral enabled
+char MySPI_Receive(int data){
+
+	while (((SPI->SR) & (SPI_SR_BSY)));
+	SPI->DR =0;
+		
+	//On attend qu'il soit plein pour lire
+	while (!(SPI->SR & SPI_SR_RXNE)){}
+	return SPI->DR;
 }
 
-void SPI_Disable (MySPI_Struct_TypeDef * MySPI)
-{		MySPI->SPI->CR1 &= ~(SPI_CR1_SPE);   // SPE=0, Peripheral Disabled
+
+void SPI_Enable ()
+{    SPI->CR1 |= (SPI_CR1_SPE);   // SPE=1, Peripheral enabled
+}
+
+void SPI_Disable ()
+{		SPI->CR1 &= ~(SPI_CR1_SPE);   // SPE=0, Peripheral Disabled
 }
 
 void CS_Set (void) //pin SPI1_CS PA11

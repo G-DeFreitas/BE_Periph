@@ -19,7 +19,8 @@ static MyGPIO_Struct_TypeDef uartRx;
 static MyTimer_Struct_TypeDef timServo;
 
 static const char bat_faible[15] = "Batterie faible";
-static const char msg_angle[7] = "angle :";
+static const char msg_angle[7] = "Angle :";
+static const char msg_alerte[19] = "Alerte Chavirement!";
 
 char * toArray(int number) //renvoie un tableau des 3 premiers chiffres de largument en char
 {
@@ -97,7 +98,7 @@ void MyTransmission_InitUart (){
 	MyUSART_Init (&muart);
 	}
 
-void MyTransmission_Send(int angle){
+void MyTransmission_NormalSend(int angle){
 	
 
 	//On suppose l'uart dejà initialisé
@@ -124,4 +125,15 @@ void MyTransmission_Send(int angle){
 		MyUSART_Send_Byte(muart.Uart, '\n');
 		while((muart.Uart->SR & USART_SR_TXE) ==0);
 	}
+}
+
+
+void MyTransmission_AlertSend(void){
+		int i;
+		for (i=0; i<19;i++){
+			MyUSART_Send_Byte(muart.Uart, msg_alerte[i]);
+			while(MyUSART_WaitOnSend(muart));
+			}
+		MyUSART_Send_Byte(muart.Uart, '\n');
+		while(MyUSART_WaitOnSend(muart));
 }

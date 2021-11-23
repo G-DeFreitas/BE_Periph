@@ -11,6 +11,6 @@ void MyTransmission_InitADCbat(void);
 int MyTransmission_BatterieFaible(char RefBatFaible);
 
 void MyTransmission_InitUart(void);
-void MyTransmission_Send(int angle);
-
+void MyTransmission_NormalSend(int angle);
+void MyTransmission_AlertSend(void);
 #endif

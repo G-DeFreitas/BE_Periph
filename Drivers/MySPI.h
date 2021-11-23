@@ -4,10 +4,6 @@
 #include "MyTimer.h"
 #include "Driver_GPIO.h"
 
-typedef struct
-{
-	SPI_TypeDef * SPI ; 
-} MySPI_Struct_TypeDef ;
 
 typedef struct
 {
@@ -16,7 +12,7 @@ typedef struct
 	signed int Z;
 } Axes_Struct_TypeDef ;
 
-
+#define SPI SPI1
 #define GPIO_SPI1 GPIOA
 #define MISOPin_SPI1 6
 #define MOSIPin_SPI1 7
@@ -26,10 +22,11 @@ typedef struct
 
 #define concat(first, second) first second
 //Initialisation de l'USART
-void MySPI_Init( MySPI_Struct_TypeDef * MySPI);
-char MySPI_ReadWrite(int toSend, MySPI_Struct_TypeDef * MySPI);
-void SPI_Enable (MySPI_Struct_TypeDef * MySPI);
-void SPI_Disable (MySPI_Struct_TypeDef * MySPI);
+void MySPI_Init(void);
+void SPI_Enable (void);
+void SPI_Disable (void);
 void CS_Set (void);
 void CS_Reset (void);
+void MySPI_Transmit (int toSend);
+char MySPI_Receive(int data);
 #endif
